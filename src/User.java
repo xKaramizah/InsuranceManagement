@@ -4,6 +4,7 @@ import java.util.Date;
 public class User {
     private static int idCounter = 0;
     private int id;
+    private String clientType;
     private String name;
     private String surname;
     private String email;
@@ -13,7 +14,7 @@ public class User {
     private ArrayList<IAddress> addresses;
     private Date lastOnline;
 
-    public User(String name, String surname, String email, String pass, String job, int age) {
+    public User(String clientType, String name, String surname, String email, String pass, String job, int age) {
         idCounter++;
         this.id = idCounter;
         this.name = name;
@@ -22,6 +23,7 @@ public class User {
         this.pass = pass;
         this.job = job;
         this.age = age;
+        this.addresses = new ArrayList<IAddress>();
     }
 
     public int getId() {
@@ -91,4 +93,5 @@ public class User {
     public void setLastOnline(Date lastOnline) {
         this.lastOnline = lastOnline;
     }
+
 }
