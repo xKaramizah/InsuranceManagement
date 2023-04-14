@@ -11,7 +11,7 @@ public class User {
     private String pass;
     private String job;
     private int age;
-    private ArrayList<IAddress> addresses;
+    private ArrayList<IAddress> addressList;
     private Date lastOnline;
 
     public User(String clientType, String name, String surname, String email, String pass, String job, int age) {
@@ -23,7 +23,7 @@ public class User {
         this.pass = pass;
         this.job = job;
         this.age = age;
-        this.addresses = new ArrayList<IAddress>();
+        this.addressList = new ArrayList<>();
     }
 
     public int getId() {
@@ -78,12 +78,13 @@ public class User {
         this.age = age;
     }
 
-    public ArrayList<IAddress> getAddresses() {
-        return addresses;
+
+    public ArrayList<IAddress> getAddressList() {
+        return addressList;
     }
 
-    public void setAddresses(ArrayList<IAddress> addresses) {
-        this.addresses = addresses;
+    public void setAddressList(ArrayList<IAddress> addresses) {
+        this.addressList = addresses;
     }
 
     public Date getLastOnline() {

@@ -26,7 +26,7 @@ public class AddressManager {
                     String homeCity = scan.next();
                     System.out.print("Post Code: ");
                     int homePostCode = scan.nextInt();
-                    user.getAddresses().add(new HomeAddress(homeStreet, homeCity, homePostCode));
+                    user.getAddressList().add(new HomeAddress(homeStreet, homeCity, homePostCode));
 
                 } catch (Exception e) {
                     System.out.println("Error adding address: " + e.getMessage());
@@ -42,7 +42,7 @@ public class AddressManager {
                     String city = scan.next();
                     System.out.print("Post Code: ");
                     int postCode = scan.nextInt();
-                    user.getAddresses().add(new BusinessAddress(street, city, postCode));
+                    user.getAddressList().add(new BusinessAddress(street, city, postCode));
 
                 } catch (Exception e) {
                     System.out.println("Error adding address: " + e.getMessage());
@@ -70,9 +70,9 @@ public class AddressManager {
         switch (choice) {
             case 1 -> {
                 try {
-                    for (int i = user.getAddresses().size() - 1; i >= 0; i--) {
-                        if (user.getAddresses().get(i) instanceof HomeAddress) {
-                            user.getAddresses().remove(i);
+                    for (int i = user.getAddressList().size() - 1; i >= 0; i--) {
+                        if (user.getAddressList().get(i) instanceof HomeAddress) {
+                            user.getAddressList().remove(i);
                         }
                     }
                 } catch (Exception e) {
@@ -82,9 +82,9 @@ public class AddressManager {
             }
             case 2 -> {
                 try {
-                    for (int i = user.getAddresses().size() - 1; i >= 0; i--) {
-                        if (user.getAddresses().get(i) instanceof BusinessAddress) {
-                            user.getAddresses().remove(i);
+                    for (int i = user.getAddressList().size() - 1; i >= 0; i--) {
+                        if (user.getAddressList().get(i) instanceof BusinessAddress) {
+                            user.getAddressList().remove(i);
                         }
                     }
                 } catch (Exception e) {

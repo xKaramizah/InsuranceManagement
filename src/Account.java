@@ -1,35 +1,46 @@
 import java.util.ArrayList;
 
 public abstract class Account implements Comparable {
-    private AuthenticationStatus status = AuthenticationStatus.FAIL;
+    AuthenticationStatus status;
     private User user;
     private ArrayList<Insurance> insurances;
 
+    public Account(User user) {
+        this.user = user;
+    }
+
     public final void showUserInfo() {
-        System.out.println("User Information\n" +
-                "- Name: " + this.user.getName() +
-                "- Surname: " + this.user.getSurname() +
-                "- Job: " + this.user.getJob() +
-                "- Age: " + this.user.getAge() +
-                "- E-mail: " + this.user.getEmail());
+        System.out.println("User Information" +
+                "\n- Name: " + this.user.getName() +
+                "\n- Surname: " + this.user.getSurname() +
+                "\n- Job: " + this.user.getJob() +
+                "\n- Age: " + this.user.getAge() +
+                "\n- E-mail: " + this.user.getEmail());
     }
 
     public void login(String email, String pass) throws InvalidAuthenticationException {
-        try {
-            if (this.user.getEmail().equalsIgnoreCase(email) && this.user.getPass().equals(pass)) {
-                System.out.println("Login successfully");
-                status = AuthenticationStatus.SUCCESS;
-            } else {
-                status = AuthenticationStatus.FAIL;
-                throw new InvalidAuthenticationException("Invalid Authentication!");
-            }
-
-        } catch (InvalidAuthenticationException error) {
-            System.out.println("Access denied: " + error.getMessage());
+        if (this.user.getEmail().equalsIgnoreCase(email) && this.user.getPass().equals(pass)) {
+            System.out.println("Login successfully");
+            status = AuthenticationStatus.SUCCESS;
+        } else {
+            status = AuthenticationStatus.FAIL;
+            throw new InvalidAuthenticationException("Invalid Authentication!");
         }
     }
 
     public abstract void addPolicy();
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public AuthenticationStatus getStatus() {
+        return this.status;
+    }
 
     @Override
     public boolean equals(Object obj) {
