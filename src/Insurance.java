@@ -1,23 +1,19 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public abstract class Insurance {
     private static int idCounter = 0;
     private int id;
     private String name;
-    private double price;
-    private Date startDate;
-    private Date endDate;
+    private LocalDate startDate;
 
-    public Insurance(String name, double price, Date startDate, Date endDate) {
+    public Insurance(String name, LocalDate startDate) {
         idCounter++;
         this.id = idCounter;
         this.name = name;
-        this.price = price;
         this.startDate = startDate;
-        this.endDate = endDate;
     }
 
-    public abstract double calculate();
+    public abstract double calculatePrice();
 
     public int getId() {
         return id;
@@ -35,27 +31,15 @@ public abstract class Insurance {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
-    }
+    public abstract LocalDate getExpireDate();
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+    public abstract void setExpireDate(int totalInsuranceTime);
 }

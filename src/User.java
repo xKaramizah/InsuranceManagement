@@ -17,6 +17,7 @@ public class User {
     public User(String clientType, String name, String surname, String email, String pass, String job, int age) {
         idCounter++;
         this.id = idCounter;
+        this.clientType = clientType;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -28,6 +29,10 @@ public class User {
 
     public int getId() {
         return id;
+    }
+
+    public String getClientType() {
+        return clientType;
     }
 
     public String getName() {
@@ -95,4 +100,7 @@ public class User {
         this.lastOnline = lastOnline;
     }
 
+    public void setClientType(String clientType) {
+        this.clientType = clientType;
+    }
 }
